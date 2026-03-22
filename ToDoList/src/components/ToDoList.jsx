@@ -1,12 +1,10 @@
 import ToDoItem from "./ToDoItem"
 
-
-function ToDoList({todos}) {
-
+function ToDoList({todos, onDelete}) {
   return (
     <ul>
-      {todos.map((val)=>(
-        <ToDoItem val={val}/>
+      {todos.map((item)=>(
+        <ToDoItem key={item.id} item={item} onDelete={onDelete} />
       ))}
     </ul>
   )

@@ -1,9 +1,11 @@
 
 
-function ToDoItem({val}) {
+function ToDoItem({item, onDelete}) {
   return (
     <li>
-      {val}
+      {item.text}
+      <button type="button" onClick={() => onDelete(item.id)}>Delete</button>
+      <button type="submit">Edit</button>
     </li>
   )
 }

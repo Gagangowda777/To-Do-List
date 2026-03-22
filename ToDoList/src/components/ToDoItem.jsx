@@ -1,11 +1,41 @@
 
 
-function ToDoItem({item, onDelete}) {
+import { useState } from "react";
+
+function ToDoItem({item, onDelete, onEdit}) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(item.text);
+
+  function handleEdit(){
+    setIsEditing(true);
+    setEditText(item.text);
+  };
+
+  function handleSave(){
+    onEdit(item.id, editText);
+    setIsEditing(false);
+  };
+
   return (
     <li>
-      {item.text}
-      <button type="button" onClick={() => onDelete(item.id)}>Delete</button>
-      <button type="submit">Edit</button>
+      {isEditing ? (
+        <>
+          <input
+            type="text"
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+          />
+          <button type="button" onClick={handleSave}>Save</button>
+        </>
+      ) 
+      : 
+      (
+        <>
+          {item.text}
+          <button type="button" onClick={handleEdit}>Edit</button>
+          <button type="button" onClick={() => onDelete(item.id)}>Delete</button>
+        </>
+      )}
     </li>
   )
 }

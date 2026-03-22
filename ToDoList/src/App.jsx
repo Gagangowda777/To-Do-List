@@ -19,6 +19,10 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
+  function handleEdit(id, newText){
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, text: newText } : todo));
+  }
+
   return (
     <div>
      
@@ -27,8 +31,8 @@ function App() {
           <button type="submit">Add Task</button>
         </form>
         
-      <ToDoList todos={todos} onDelete={handleDelete}/>
-      
+      <ToDoList todos={todos} onDelete={handleDelete} onEdit={handleEdit}/>
+
     </div>
   )
 }

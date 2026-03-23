@@ -2,7 +2,8 @@ import ToDoItem from "./ToDoItem"
 
 function ToDoList({todos, onDelete, onEdit, onToggleComplete}) {
   return (
-    <ul>
+    <ul className="space-y-2">
+      {/* passing props to todoItem */}
       {todos.map((item)=>(
         <ToDoItem
           key={item.id}
@@ -16,4 +17,4 @@ function ToDoList({todos, onDelete, onEdit, onToggleComplete}) {
   )
 }
 
-export default ToDoList
+export default ToDoList;
